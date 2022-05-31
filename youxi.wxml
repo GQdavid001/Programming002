@@ -17,3 +17,4 @@
       <view class="b-title" wx:elif="!{{chaoshi}}">游戏未超时哦</view>
     </view>
 </view>
+修改一下试试看
