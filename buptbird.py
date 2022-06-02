@@ -30,3 +30,60 @@ DIE = pygame.mixer.Sound(r"C:\Users\86156\Desktop\pycharm项目\audio\die.wav")
 HIT = pygame.mixer.Sound(r"C:\Users\86156\Desktop\pycharm项目\audio\hit.wav")
 SCORE = pygame.mixer.Sound(r"C:\Users\86156\Desktop\pycharm项目\audio\score.wav")
 FLAP = pygame.mixer.Sound(r"C:\Users\86156\Desktop\pycharm项目\audio\flap.wav")
+
+class Bird:
+    def __init__(self,x,y):
+        self.frames = [0]*5 + [1]*5 + [2]*5 + [1]*5
+        self.idx = 0
+        self.images = IMAGES['birds']
+        self.image = self.images[self.frames[self.idx]]
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.y_vel = 0
+        self.max_y_vel = 10
+        self.gravity = 1
+        self.rotate = 45
+        self.max_rotate = -20
+        self.rotate_vel = -3
+        self.y_vel_after_flap = -10
+        self.rotate_after_flap = 45
+
+    def update(self,flap=False):
+        if flap:
+            self.y_vel = self.y_vel_after_flap
+            self.rotate = self.rotate_after_flap
+        self.y_vel = min(self.y_vel + self.gravity,self.max_y_vel)
+        self.rect.y += self.y_vel
+        self.rotate = max(self.rotate+self.rotate_vel,self.max_rotate)
+
+        self.idx += 1
+        self.idx %= len(self.frames)
+        self.image = IMAGES['birds'][self.frames[self.idx]]
+        self.image = pygame.transform.rotate(self.image,self.rotate)
+
+    def go_die(self):
+        if self.rect.y < floor_y:
+            self.rect.y += self.max_y_vel
+            self.rotate = -90
+            self.image = self.images[self.frames[self.idx]]
+            self.image = pygame.transform.rotate(self.image,self.rotate)
+
+
+class Pipe(pygame.sprite.Sprite): #让水管类继承精灵类的方法
+    def __init__(self,x,y,upwards=True):#upwards变量标志着水管是上面还是下面出现
+        pygame.sprite.Sprite.__init__(self)
+        if upwards:
+            self.image = IMAGES['pipes'][0]
+            self.rect = self.image.get_rect()
+            self.rect.x = x
+            self.rect.top= y
+        else:
+            self.image = IMAGES['pipes'][1]
+            self.rect = self.image.get_rect()
+            self.rect.x = x
+            self.rect.bottom = y
+
+        self.x_vel = -4
+    def update(self):
+        self.rect.x += self.x_vel
