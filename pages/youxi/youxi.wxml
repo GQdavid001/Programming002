@@ -1,6 +1,6 @@
 <view>
-<button bindtap="huoqu">显示最新排行榜</button>
-<view wx:for="{{array1}}">{{item.name}}     {{item.score}}</view>
+<view><button bindtap="huoQu">显示最新排行榜</button></view>
+<view wx:for="{{array1}}">{{item.id}}     {{item.score}}</view>
 </view>
 <view>
 <input placeholder="用户名" bindinput="yonghuming" >
