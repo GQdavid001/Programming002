@@ -13,7 +13,7 @@
   overflow: hidden;
   position: fixed;
   top: 15%;
-  background: #f9f9f9;
+  background: rgb(250, 248, 248);
   border-radius: 30rpx; 
   right: 5%;
   height: 800rpx;
@@ -46,4 +46,183 @@
   font-size:26rpx;
   text-align:center;
   margin-top:20rpx;
+}
+
+.hot-list {
+  background:rgb(250, 248, 248);
+  padding: 0 100rpx;
+}
+.hot-list view:nth-child(1) .books-right .books-title view:nth-child(2){
+  color: #DC143C;
+}
+.hot-list view:nth-child(2) .books-right .books-title view:nth-child(2){
+  color: #FF4500;
+}
+.hot-list view:nth-child(3) .books-right .books-title view:nth-child(2){
+  color: #FF8C00;
+}
+.books {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 1px solid #efefef;
+}
+ 
+.books image {
+  width: 200rpx;
+  height: 250rpx;
+}
+ 
+.books-right {
+  width: 70%;
+  margin-left: 20rpx;
+  padding: 10rpx 0; 
+}
+ 
+.books-right .books-title {
+  font-size: 35rpx;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ 
+.books-right .books-title view:nth-child(2) {
+  color: gray;
+  font-style: oblique;
+}
+ 
+.books-right .books-introduce {
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+  letter-spacing: 5rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.books-right .book-B {
+  margin-top: 40rpx; 
+  font-size: 25rpx;
+  color: gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.books-right .book-B view:nth-child(2) {
+  font-size: 20rpx;
+}
+.books-right .book-B view:nth-child(2) text:nth-child(1) {
+  border: 1px solid gray;
+  padding: 5rpx 10rpx;
+}
+
+/* pages/login/login.wxss *//* 最大的父元素 */
+.v1{
+  display: block;
+  position:absolute;
+  width: 100%;
+  background-color: rgb(250, 248, 248);
+}
+/* 白色区域 */
+.v1 .v2{
+  position: relative;
+  margin-top: 150rpx;
+  left: 100rpx; 
+  width: 545rpx;
+  height: 600rpx;
+  background-color: rgb(250, 248, 248);
+  border-radius: 50rpx;
+}
+/* 白色区域内的登录文本 */
+.v1 .v2 .dltext{
+  margin-top: 50rpx;
+  position: absolute;
+  margin-left:50rpx;
+  width: 150rpx;
+  height: 100rpx;
+  font-size: 60rpx;
+  font-family: Helvetica;
+  color: #000000;
+  line-height: 100rpx;
+  letter-spacing: 2rpx;
+}
+/* 手机图片+输入框+下划线的父容器view */
+.v1 .v2 .phoneCs{
+  margin-top: 200rpx;
+  margin-left: 25rpx;
+  position: absolute;
+  display: flex;
+  width:480rpx ;
+  height: 90rpx ;
+  background-color: white;
+  
+}
+/* 手机图标 */
+.v1 .v2 .phoneCs .ph{
+  margin-top: 5rpx;
+  margin-left: 30rpx;
+  width: 55rpx;
+  height: 55rpx;
+}
+/* 手机号输入框 */
+.v1 .v2 .phoneCs input{
+  width: 400rpx;
+  font-size: 30rpx ;
+  margin-top: 25rpx;
+  margin-left: 30rpx;
+}
+/* 密码图标+输入框+小眼睛图标+下划线父容器view */
+.v1 .v2 .passwordCs{
+  margin-top: 350rpx;
+  margin-left: 25rpx;
+  position: absolute;
+  display: flex;
+  width:480rpx ;
+  height: 90rpx ;
+  background-color: white;
+
+}
+/* 密码图标 */
+.v1 .v2 .passwordCs .ps{
+  margin-top: 5rpx;
+  margin-left: 30rpx;
+  width: 55rpx;
+  height: 55rpx;
+}
+/* 眼睛 图标*/
+.v1 .v2 .passwordCs .eye{
+  margin-top: 5rpx;
+  margin-left: 65rpx;
+  width: 55rpx;
+  height: 55rpx;
+}
+/* 密码输入框 */
+.v1 .v2 .passwordCs input{
+  width: 400rpx;
+  font-size: 30rpx ;
+  margin-top: 25rpx;
+  margin-left: 30rpx;
+}
+/* 登录按钮容器view */
+.v1 .v2 .denglu{
+  width: 480rpx;
+  height: 80rpx;
+  position: absolute;
+  margin-top:515rpx;
+  margin-left:25rpx;
+  
+}
+/* 登录按钮 */
+.v1 .v2 .denglu button{
+  padding: 0rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  width: 100%;
+  height: 100%;
+  border-radius: 5rpx;
 }
