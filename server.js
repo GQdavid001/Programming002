@@ -1,3 +1,4 @@
+
 var express = require("express");
 var querystring = require('querystring');
 var mysql = require('mysql');
@@ -49,8 +50,8 @@ app.get("/onLoad", function (req, res) {
   });
 });
 //时间信息获取
-app.get("/huoQu", function (req, res) {
-  var sql = 'select * from playtimescore';
+app.get("/onPullDownRefresh", function (req, res) {
+  var sql = 'select ID_score,score, playtime from scores	,playtime where ID_score=playtime_ID';
   connection.query(sql , function (err, data) {
     if (err) {
       console.log(err);
