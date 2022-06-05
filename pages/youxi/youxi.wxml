@@ -1,14 +1,41 @@
-<view>
-<view><button bindtap="huoQu">显示最新排行榜</button></view>
-<view wx:for="{{array1}}">{{item.id}}     {{item.score}}</view>
+<view class="hot-list">
+  <view class="books" wx:for="{{array1}}" wx:key="index">
+    <!-- <image src="{{item.img}}"></image> -->
+    <view class="books-right">
+      <view class="books-title">
+        <view>{{item.id}}</view>
+        <view>{{index + 1}}</view>
+      </view>
+      <!-- <view class="books-introduce">[{{item.status}}]{{item.introduce}}</view> -->
+      <view class="book-B">
+        <view>积分：</view>
+        <view>
+          <text>{{item.score}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
-<view>
-<input placeholder="用户名" bindinput="yonghuming" >
-</input>
-<input placeholder="密码" bindinput="mima">
-</input>
-<button bindtap="denglu">登录</button>
-<view class="modal-mask" bindtap="hidepopup"  wx:if="{{showModal}}"></view>
+<view class="v1" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
+ 
+ <!-- v2父容器  子view使用绝对布局 -->
+   <view class="v2">
+     <view class="dltext" style="width: 232rpx; height: 92rpx; display: block; box-sizing: border-box; left: 0rpx; top: -2rpx">登录</view>
+  
+     <!-- 手机号 -->
+     <view class="phoneCs">
+       <!-- <image src="/images/zhang.png" class="ph"></image> -->
+       <input placeholder="请输入账号" type="number" bindinput="yonghuming" />
+     </view>
+     <!-- 密码 -->
+     <view class=passwordCs">
+       <!-- <image src="/images/mi.png" class="ps"></image> -->
+       <input placeholder="请输入密码" type="password" bindinput="mima" />
+     </view>
+     <!-- 登录按钮 -->
+     <view class="denglu">
+       <button class="btn-dl" type="primary" bindtap="denglu">登录</button>
+       <view class="modal-mask" bindtap="hidepopup"  wx:if="{{showModal}}"></view>
     <view class="modal-dialog" wx:if="{{showModal}}">
       <image bindtap='hidepopup' class="guanbi"  src='../../pages/关闭.png' mode="widthFix,heightFix"></image>
       <view class="t-title">游戏时长:{{time}}</view>
@@ -16,4 +43,6 @@
       <view class="b-title" wx:if="{{chaoshi}}">游戏已超时！！！</view>
       <view class="b-title" wx:elif="!{{chaoshi}}">游戏未超时哦</view>
     </view>
-</view>
+     </view>
+   </view>
+ </view>
