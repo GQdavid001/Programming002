@@ -42,13 +42,16 @@ onLoad(){
   });
 },
 
-huoQu() {
+onPullDownRefresh:function(){
+  this.onRefresh();
+
+
   var array2=this.data.array1;//给array赋值
   //信息的请求和导入
   let that = this;
 //玩耍时间、积分的导入
   wx.request({
-    url: 'http://localhost:3000/huoQu',
+    url: 'http://localhost:3000/onPullDownRefresh',
     method: 'GET',
     data: {},
     header: {
@@ -59,8 +62,10 @@ huoQu() {
       //嵌套循环用于更新游戏积分还有时间
       for(let i=0;i<array2.length;i++){
         for(let j=0;j<res.data.data.length;j++){
-          if(array2[i].id==res.data.data[j].playtime_ID){
-          array2[i].time=res.data.data[j].playtime;
+          if(array2[i].id==res.data.data[j].ID_score){
+            if(array2[i].time<res.data.data[j].playtime){
+              array2[i].time=res.data.data[j].playtime;
+              }
           if(array2[i].score<res.data.data[j].score){
             array2[i].score=res.data.data[j].score
             }
@@ -89,8 +94,11 @@ huoQu() {
    array1:array2
  })
 
-}
-,
+},
+// huoQu() {
+ 
+// }
+// ,
 yonghuming(e){
 this.setData({
   id:e.detail.value
@@ -144,5 +152,22 @@ console.log("a",a)
 hidepopup: function () {
   this.setData({
     showModal: false
-  })}
+  })},
+
+  onRefresh:function(){
+    //导航条加载动画
+    wx.showNavigationBarLoading()
+    //loading 提示框
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    console.log("下拉刷新啦");
+    setTimeout(function () {
+      wx.hideLoading();
+      wx.hideNavigationBarLoading();
+      //停止下拉刷新
+      wx.stopPullDownRefresh();
+    }, 2000)
+  }
+
 })
